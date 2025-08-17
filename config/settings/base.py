@@ -19,8 +19,9 @@ ssl._create_default_https_context = ssl._create_default_https_context = lambda: 
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PUBLISHABLE_KEY", "pk_test_51Rus8FK5IMUw9tZv9dhvVTznJfBlZAKRJ4nlxZJkQq3IhlgshegWYzg7OlC2J3glF5lYO3LYdYq4q0a6y4A9EdKE00SJsbnZDH")
-
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
+STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
+STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET")
 
 DOMAIN = os.getenv("DOMAIN", "http://127.0.0.1:8000")
 
