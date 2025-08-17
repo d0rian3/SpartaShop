@@ -1,0 +1,799 @@
+{% extends "base.html" %} {% load static %} {% block navigate %}
+<nav class="PcNav">
+  <article class="PcNavArticle">
+    <section class="PositivusLogo">
+      <a href="/">
+        <img src="{% static 'images/favicon.png' %}" alt="Positivus Logo" />
+      </a>
+    </section>
+    <section class="RightSideList">
+      <ul class="ListNav">
+        <li data-text="navOffer" class="whyUsLink">Что мы предлагаем</li>
+        <li data-text="navAdvantages" class="adventageLink">Преимущества</li>
+        <li><a href="{% url 'shop' %}" data-text="navShop">Магазин</a></li>
+        <li data-text="navFaq" class="questions">Вопросы</li>
+        <li data-text="navGallery" class="galleryLink">Галерея</li>
+      </ul>
+    </section>
+    <section class="LangNavSection">
+      <ul>
+        <li class="submenu-link" data-lang="ru">RU</li>
+        <li class="submenu-link" data-lang="en">EN</li>
+        <li class="submenu-link" data-lang="cz">CZ</li>
+        <li class="submenu-link" data-lang="uk">UK</li>
+      </ul>
+    </section>
+    <section class="RightSideList">
+      <ul class="ListNav">
+        <li>
+          <button data-text="navContact" class="contactUsLink1">
+            Свяжитесь с нами
+          </button>
+        </li>
+      </ul>
+    </section>
+    <section class="burgerSection">
+      <label class="popup">
+        <input type="checkbox" />
+        <div class="burger" tabindex="0">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav class="popup-window">
+          <legend data-text="legendAction">Действия</legend>
+          <ul>
+            <li>
+              <button>
+                <svg
+                  stroke-linejoin="round"
+                  stroke-linecap="round"
+                  stroke-width="2"
+                  stroke="white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  height="14"
+                  width="14"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle r="4" cy="7" cx="9"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <a
+                  href="#adventage"
+                  class="adventageLink"
+                  data-text="navAdvantages"
+                  ><u>Преимущества</u></a
+                >
+              </button>
+            </li>
+            <li>
+              <button>
+                <svg
+                  stroke-linejoin="round"
+                  stroke-linecap="round"
+                  stroke-width="2"
+                  stroke="white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  height="14"
+                  width="14"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+                  ></path>
+                  <path
+                    d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+                  ></path>
+                </svg>
+                <a href="#whyUsId" class="whyUsLink" data-text="navOffer"
+                  >Предлагаем</a
+                >
+              </button>
+            </li>
+
+            <li>
+              <button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="20px"
+                  viewBox="0 -960 960 960"
+                  width="20px"
+                  fill="#FFFFFF"
+                >
+                  <path
+                    d="M263.79-96Q234-96 213-117.21t-21-51Q192-198 213.21-219t51-21Q294-240 315-218.79t21 51Q336-138 314.79-117t-51 21Zm432 0Q666-96 645-117.21t-21-51Q624-198 645.21-219t51-21Q726-240 747-218.79t21 51Q768-138 746.79-117t-51 21ZM253-696l83 192h301l82-192H253Zm-31-72h570q14 0 20.5 11t1.5 23L702.63-476.14Q694-456 676.5-444T637-432H317l-42 72h493v72H276q-43 0-63.5-36.15-20.5-36.16.5-71.85l52-90-131-306H48v-72h133l41 96Zm114 264h301-301Z"
+                  />
+                </svg>
+                <a href="{% url 'shop' %}" class="whyUsLink" data-text="navShop"
+                  >Магазин</a
+                >
+              </button>
+            </li>
+
+            <hr />
+            <li>
+              <button>
+                <svg
+                  stroke-linejoin="round"
+                  stroke-linecap="round"
+                  stroke-width="2"
+                  stroke="white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  height="14"
+                  width="14"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect ry="2" rx="2" height="13" width="13" y="9" x="9"></rect>
+                  <path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
+                <a href="#faqBlock" class="questions" data-text="navFaq"
+                  >Вопросы</a
+                >
+              </button>
+            </li>
+            <li>
+              <button>
+                <svg
+                  stroke-linejoin="round"
+                  stroke-linecap="round"
+                  stroke-width="2"
+                  stroke="white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  height="14"
+                  width="14"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon>
+                </svg>
+                <a href="#gallery" class="galleryLink" data-text="navGallery"
+                  >Галерея</a
+                >
+              </button>
+            </li>
+            <hr />
+            <li>
+              <button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="14px"
+                  viewBox="0 -960 960 960"
+                  width="14px"
+                  fill="#e8eaed"
+                >
+                  <path
+                    d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z"
+                  />
+                </svg>
+                <a
+                  href="#FooterNavId"
+                  class="galleryLink"
+                  data-text="navContact"
+                  >Свяжитесь с нами!</a
+                >
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </label>
+    </section>
+  </article>
+</nav>
+{% endblock %} {% block header %}
+<header>
+  <article class="PcHeader">
+    <section class="DigitalMarketing">
+      <h1 data-text="headerTitle">
+        Зарабатывай более 3000 Kč в день работая с нами и получи ряд преимуществ
+      </h1>
+      <span data-text="headerSubtitle">
+        Ищете надежный электровелосипед и флотилию для работы курьером? Мы здесь
+        для вас! Предлагаем самые комфортные, безопасные электровелосипеды
+        FATBIKE
+      </span>
+      <button data-text="headerButton" class="contactUsLink2">
+        🚀 Свяжитесь с нами и начните зарабатывать
+      </button>
+    </section>
+    <section class="IllustrationPic">
+      {% if request.GET.payment == "success" %}
+      <div
+        id="payment-popup"
+        style="
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: #4caf50;
+          color: white;
+          padding: 15px 20px;
+          border-radius: 5px;
+          z-index: 9999;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+          transition: opacity 0.5s ease;
+          opacity: 1;
+        "
+      >
+        ✅ Оплата прошла успешно!
+      </div>
+      <script>
+        setTimeout(function () {
+          let popup = document.getElementById("payment-popup");
+          popup.style.opacity = "0";
+          setTimeout(function () {
+            popup.remove();
+          }, 500);
+        }, 5000);
+      </script>
+      {% endif %} {% if request.GET.payment == "cancel" %}
+      <div
+        id="payment-popup"
+        style="
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: #f44336;
+          color: white;
+          padding: 15px 20px;
+          border-radius: 5px;
+          z-index: 9999;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+          transition: opacity 0.5s ease;
+          opacity: 1;
+        "
+      >
+        ❌ Оплата не прошла!
+      </div>
+      <script>
+        setTimeout(function () {
+          let popup = document.getElementById("payment-popup");
+          popup.style.opacity = "0";
+          setTimeout(function () {
+            popup.remove();
+          }, 500);
+        }, 5000);
+      </script>
+      {% endif %}
+
+      <img src="{% static 'images/header_photo.jpg' %}" alt="header" />
+    </section>
+  </article>
+</header>
+{% endblock %} {% block main %}
+<main>
+  <article class="ArticleMain">
+    <section class="RunningImages">
+      <div>
+        <img src="{% static 'images/logo24.png' %}" alt="" />
+        <img src="{% static 'images/logo25.png' %}" alt="" />
+        <img src="{% static 'images/logo30.png' %}" alt="" />
+        <img src="{% static 'images/logo31.png' %}" alt="" />
+        <img src="{% static 'images/logo27.png' %}" alt="" />
+        <img src="{% static 'images/logo32.png' %}" alt="" />
+        <img src="{% static 'images/wolt.png' %}" alt="" />
+        <img src="{% static 'images/foodora.png' %}" alt="" />
+      </div>
+    </section>
+    <div class="ServicesList" id="whyUsId">
+      <button data-text="servicesButton">Сервисы</button>
+      <span data-text="servicesSubtitle">
+        Всё для вашего транспорта — надёжно, удобно, профессионально.
+        Обслуживание, аренда, продажа и выкуп — всё в одном месте:
+      </span>
+    </div>
+    <section class="ServicesCards">
+      <ul class="CardsList">
+        <li>
+          <div class="CardSearch">
+            <h3 data-text="servicesCard1Title">Обслуживание транспорта</h3>
+            <div class="LearnMore">
+              <span data-text="servicesCard1Description"
+                >Надёжный ремонт и сервис для вашего транспорта.</span
+              >
+            </div>
+          </div>
+          <img src="{% static 'images/card1.png' %}" alt="header" />
+        </li>
+        <li>
+          <div class="CardSearch">
+            <h3 data-text="servicesCard2Title">Флотилия Болт</h3>
+            <div class="LearnMore">
+              <span data-text="servicesCard2Description"
+                >Управление и обслуживание парков для курьеров и
+                водителей.</span
+              >
+            </div>
+          </div>
+          <img src="{% static 'images/card2.png' %}" alt="header" />
+        </li>
+        <li>
+          <div class="CardSearch">
+            <h3 data-text="servicesCard3Title">Аренда электровелосипедов</h3>
+            <div class="LearnMore">
+              <span data-text="servicesCard3Description"
+                >Современные электровелосипеды в аренду на выгодных
+                условиях.</span
+              >
+            </div>
+          </div>
+          <img src="{% static 'images/card3.png' %}" alt="header" />
+        </li>
+        <li>
+          <div class="CardSearch">
+            <h3 data-text="servicesCard4Title">Продажа электровелосипедов</h3>
+            <div class="LearnMore">
+              <span data-text="servicesCard4Description"
+                >Новые и проверенные электровелосипеды по доступным ценам.</span
+              >
+            </div>
+          </div>
+          <img src="{% static 'images/card4.png' %}" alt="header" />
+        </li>
+        <li>
+          <div class="CardSearch">
+            <h3 data-text="servicesCard5Title">Аренда с выкупом</h3>
+            <div class="LearnMore">
+              <span data-text="servicesCard5Description"
+                >Удобный способ приобрести транспорт — аренда с последующим
+                выкупом.</span
+              >
+            </div>
+          </div>
+          <img src="{% static 'images/card5.png' %}" alt="header" />
+        </li>
+        <li>
+          <div class="CardSearch">
+            <h3 data-text="servicesCard6Title">Ремонт и сервис</h3>
+            <div class="LearnMore">
+              <span data-text="servicesCard6Description"
+                >Качественное техническое обслуживание и ремонт любого
+                транспорта.</span
+              >
+            </div>
+          </div>
+          <img src="{% static 'images/card6.png' %}" alt="header" />
+        </li>
+      </ul>
+    </section>
+
+    <section class="ServicesCardsPhone">
+      <ul class="CardsList">
+        <li>
+          <div class="CardSearch">
+            <h3 data-text="servicesCard1Title">Обслуживание транспорта</h3>
+            <div class="LearnMore">
+              <span data-text="servicesCard1Description"
+                >Надёжный ремонт и сервис для вашего транспорта.</span
+              >
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="CardSearch">
+            <h3 data-text="servicesCard2Title">Флотилия Болт</h3>
+            <div class="LearnMore">
+              <span data-text="servicesCard2Description"
+                >Управление и обслуживание парков для курьеров и
+                водителей.</span
+              >
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="CardSearch">
+            <h3 data-text="servicesCard3Title">Аренда электровелосипедов</h3>
+            <div class="LearnMore">
+              <span data-text="servicesCard3Description"
+                >Современные электровелосипеды в аренду на выгодных
+                условиях.</span
+              >
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="CardSearch">
+            <h3 data-text="servicesCard4Title">Продажа электровелосипедов</h3>
+            <div class="LearnMore">
+              <span data-text="servicesCard4Description"
+                >Новые и проверенные электровелосипеды по доступным ценам.</span
+              >
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="CardSearch">
+            <h3 data-text="servicesCard5Title">Аренда с выкупом</h3>
+            <div class="LearnMore">
+              <span data-text="servicesCard5Description"
+                >Удобный способ приобрести транспорт — аренда с последующим
+                выкупом.</span
+              >
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="CardSearch">
+            <h3 data-text="servicesCard6Title">Ремонт и сервис</h3>
+            <div class="LearnMore">
+              <span data-text="servicesCard6Description"
+                >Качественное техническое обслуживание и ремонт любого
+                транспорта.</span
+              >
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </article>
+  <article>
+    <section class="CaseStudies">
+      <div>
+        <h3 data-text="caseStudiesTitle">Давайте двигаться вперёд вместе</h3>
+        <p>
+          Свяжитесь с нами — расскажем, как наши транспортные решения помогут
+          вам начать, развивать или усилить ваш бизнес.
+        </p>
+        <button data-text="caseStudiesButton" class="contactUsLink3">
+          Получить консультацию
+        </button>
+      </div>
+      <img src="{% static 'images/card7.png' %}" alt="header" />
+    </section>
+  </article>
+
+  <article class="Advantages" id="adventage">
+    <section>
+      <div class="ServicesList">
+        <h3 data-text="fatbikeAdvantagesTitle">
+          Курьеру в Праге будет удобнее ездить на FATBIKE по нескольким
+          причинам:
+        </h3>
+      </div>
+    </section>
+    <section class="AdvantagesList">
+      <ul>
+        <li data-text="fatbikeAdvantages1">
+          Проходимость: колеса обеспечивают хорошее сцепление на неровных и
+          скользких дорогах.
+        </li>
+        <li data-text="fatbikeAdvantages2">
+          Устойчивость: Fat bike лучше для Праги, потому что его широкие шины
+          смягчают брусчатку, справляются со снегом и позволяют комфортно ездить
+          по паркам и бордюрам.
+        </li>
+        <li data-text="fatbikeAdvantages3">
+          Зима и снег: Fat bike легко передвигается по снегу и льду, что важно
+          зимой.
+        </li>
+        <li data-text="fatbikeAdvantages4">
+          Комфорт: Fat bike поглощает удары, снижая вибрацию и усталость
+          курьера.
+        </li>
+        <li data-text="fatbikeAdvantages5">
+          Долговечность: Прочные шины уменьшают риск повреждений, сокращают
+          количество ремонтов.
+        </li>
+        <li data-text="fatbikeAdvantages6">
+          Таким образом, FATBIKE удобен для курьера, особенно в плохую погоду
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="ServicesList">
+        <h3 data-text="buybackConditionsTitle">
+          Предлагаем курьерам выгодные условия для ВЫКУПА и ПОКУПКИ
+          электровелосипедов по доступным ценам. Наши предложения включают:
+        </h3>
+      </div>
+    </section>
+    <section class="AdvantagesList">
+      <ul>
+        <li data-text="buybackConditions1">
+          Льготные условия покупки/выкупа – курьеры могут приобрести новый
+          электровелосипед с существенной скидкой
+        </li>
+        <li data-text="buybackConditions2">
+          Программа лояльности – бонусы и скидки для курьеров, которые остаются
+          с нами длительное время.
+        </li>
+        <li data-text="buybackConditions3">
+          Скидки за объем заказов– для курьеров, имеющих большое количество
+          выполненных заказов, мы предлагаем дополнительные скидки при покупке
+          или выкупе электровелосипеда.
+        </li>
+        <li data-text="buybackConditions4">
+          Эти предложения помогут курьерам работать эффективно и экономно!
+        </li>
+      </ul>
+    </section>
+  </article>
+
+  <article>
+    <section>
+      <div class="ServicesList">
+        <button data-text="faqButton">Часто задаваемые вопросы</button>
+      </div>
+    </section>
+  </article>
+  <article class="ArticleWhatWeDo" id="faqBlock">
+    <section class="WhatWeDo">
+      <h3 data-text="whatWeDoTitle">Что мне нужно для работы?</h3>
+      <!-- <img src="./assets/icons/Plus icon.png" alt="" /> -->
+      <span class="toggleSwitcher">></span>
+    </section>
+    <section class="WhatWeDoDesc">
+      <ul>
+        <li data-text="whatWeDoAge">Возраст от 16 лет</li>
+        <li data-text="whatWeDoPhone">
+          Смартфон(ios, android) с доступом в интернет
+        </li>
+        <li data-text="whatWeDoResidence">Легальное пребывание в Чехии</li>
+      </ul>
+    </section>
+    <section class="WhatWeDo">
+      <h3 data-text="whatWeDoCommissionHeader">
+        Какой процент вы удерживаете?
+      </h3>
+      <span class="toggleSwitcher">></span>
+    </section>
+    <section class="WhatWeDoDesc">
+      <ul>
+        <li data-text="whatWeDoCommission">
+          Мы берем 700 крон от заработка, который вы видите в приложении
+        </li>
+      </ul>
+    </section>
+    <section class="WhatWeDo">
+      <h3 data-text="whatWeDoPayoutHeader">Когда вы отправляете выплату?</h3>
+      <span class="toggleSwitcher">></span>
+    </section>
+    <section class="WhatWeDoDesc">
+      <ul>
+        <li data-text="whatWeDoPayout1">
+          Выплаты производятся каждый вторник(исключение - праздничные дни)
+        </li>
+        <li data-text="whatWeDoPayout2">
+          После праздников в течении 1-2 рабочих дней 🤓☝🏼
+        </li>
+      </ul>
+    </section>
+    <section class="WhatWeDo">
+      <h3 data-text="whatWeDoTransferHeader">
+        Можете ли вы перевести выплату на счет, который не принадлежит мне?
+      </h3>
+      <span class="toggleSwitcher">></span>
+    </section>
+    <section class="WhatWeDoDesc">
+      <ul>
+        <li data-text="whatWeDoTransfer">
+          Да. Например, счет вашего родственника или друга
+        </li>
+      </ul>
+    </section>
+    <section class="WhatWeDo">
+      <h3 data-text="whatWeDoBenefitsHeader">
+        Какие преимущества работать курьером на электровелосипеде?
+      </h3>
+      <span class="toggleSwitcher">></span>
+    </section>
+    <section class="WhatWeDoDesc">
+      <ul>
+        <li data-text="whatWeDoBenefits">
+          Работа курьером на электровелосипеде FATBIKE дает преимущества:
+          -высокая проходимость в любых условиях -комфорт на неровных дорогах
+          -скорость и экономия сил за счет электропривода -независимость от
+          пробок и затрат на топливо 🚴⚡
+        </li>
+      </ul>
+    </section>
+  </article>
+
+  <div id="caption1" style="display: none">
+    <h4 data-text="captionHeader">
+      Аренда лучших электровелосипедов для доставки в Праге! 🚴‍♂️🚗
+    </h4>
+    <p>+420 723 194 644</p>
+  </div>
+  <article id="gallery">
+    <a
+      href="{% static 'images/photo_2025-03-05_19-37-41.jpg' %}"
+      data-sub-html="#caption1"
+      class="image"
+    >
+      <img src="{% static 'images/photo_2025-03-05_19-37-41.jpg' %}" alt="" />
+    </a>
+    <a
+      href="{% static 'images/photo_2025-03-05_19-37-26.jpg' %}"
+      data-sub-html="#caption1"
+      class="image"
+    >
+      <img src="{% static 'images/photo_2025-03-05_19-37-26.jpg' %}" alt="" />
+    </a>
+    <a
+      href="{% static 'images/photo_2025-03-05_19-37-35.jpg' %}"
+      data-sub-html="#caption1"
+      class="image"
+    >
+      <img src="{% static 'images/photo_2025-03-05_19-37-35.jpg' %}" alt="" />
+    </a>
+    <a
+      href="{% static 'images/photo_2025-03-05_19-37-46.jpg' %}"
+      data-sub-html="#caption1"
+      class="image"
+    >
+      <img src="{% static 'images/photo_2025-03-05_19-37-46.jpg' %}" alt="" />
+    </a>
+    <a
+      href="{% static 'images/photo_2025-03-05_19-37-50.jpg' %}"
+      data-sub-html="#caption1"
+      class="image"
+    >
+      <img src="{% static 'images/photo_2025-03-05_19-37-50.jpg' %}" alt="" />
+    </a>
+    <a
+      href="{% static 'images/photo_2025-03-06_10-40-26.jpg' %}"
+      data-sub-html="#caption1"
+      class="image"
+    >
+      <img src="{% static 'images/photo_2025-03-06_10-40-26.jpg' %}" alt="" />
+    </a>
+    <a
+      href="{% static 'images/photo_2025-03-05_19-37-55.jpg' %}"
+      data-sub-html="#caption1"
+      class="image"
+    >
+      <img src="{% static 'images/photo_2025-03-05_19-37-55.jpg' %}" alt="" />
+    </a>
+    <a
+      href="{% static 'images/bike1.jpg' %}"
+      data-sub-html="#caption1"
+      class="image"
+    >
+      <img src="{% static 'images/bike1.jpg' %}" alt="" />
+    </a>
+    <a
+      href="{% static 'images/bike2.jpg' %}"
+      data-sub-html="#caption1"
+      class="image"
+    >
+      <img src="{% static 'images/bike2.jpg' %}" alt="" />
+    </a>
+    <a
+      href="{% static 'images/bike3.jpg' %}"
+      data-sub-html="#caption1"
+      class="image"
+    >
+      <img src="{% static 'images/bike3.jpg' %}" alt="" />
+    </a>
+    <a
+      href="{% static 'images/bike4.jpg' %}"
+      data-sub-html="#caption1"
+      class="image"
+    >
+      <img src="{% static 'images/bike4.jpg' %}" alt="" />
+    </a>
+    <a
+      href="{% static 'images/bike5.jpg' %}"
+      data-sub-html="#caption1"
+      class="image"
+    >
+      <img src="{% static 'images/bike5.jpg' %}" alt="" />
+    </a>
+    <a
+      href="{% static 'images/bike6.jpg' %}"
+      data-sub-html="#caption1"
+      class="image"
+    >
+      <img src="{% static 'images/bike6.jpg' %}" alt="" />
+    </a>
+    <a
+      href="{% static 'images/group.jpg' %}"
+      data-sub-html="#caption1"
+      class="image"
+    >
+      <img src="{% static 'images/group.jpg' %}" alt="" />
+    </a>
+    <a
+      href="{% static 'images/w-tower.jpg' %}"
+      data-sub-html="#caption1"
+      class="image"
+    >
+      <img src="{% static 'images/w-tower.jpg' %}" alt="" />
+    </a>
+    <a
+      href="{% static 'images/girl_driver.jpg' %}"
+      data-sub-html="#caption1"
+      class="image"
+    >
+      <img src="{% static 'images/girl_driver.jpg' %}" alt="" />
+    </a>
+  </article>
+
+  <article>
+    <section>
+      <div class="ServicesList" id="contactUsFormId">
+        <button data-text="contactUsButton">Свяжитесь с нами</button>
+      </div>
+    </section>
+  </article>
+
+  <article class="ArticleForm">
+    <section class="ContactUsForm">
+      <form id="contact-form">
+        <label for="input-name" class="input_label">Name</label>
+        <input
+          id="input-name"
+          class="input_field"
+          type="text"
+          name="from_name"
+          placeholder="Name"
+          required
+        />
+
+        <label for="input-phone" class="input_label">Phone number</label>
+        <input
+          id="input-phone"
+          class="input_field"
+          type="tel"
+          name="phone_number"
+          placeholder="Phone number"
+          required
+        />
+
+        <label for="textarea-message" class="input_label">Message</label>
+        <textarea
+          id="textarea-message"
+          name="message"
+          placeholder="Message"
+          class="textarea"
+          required
+        ></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <img src="{% static 'images/footer1.png' %}" alt="header" />
+  </article>
+</main>
+{% endblock %} {% block footer %}
+
+<footer>
+  <article>
+    <section class="FooterNav">
+      <h2>Kurýři v Praze</h2>
+
+      <ul class="ListFooter">
+        <li data-text="navOffer">Что мы предлагаем</li>
+        <li data-text="navAdvantages">Преимущества</li>
+        <li data-text="navShop">Магазин</li>
+        <li data-text="navFaq">Вопросы</li>
+        <li data-text="navGallery">Галерея</li>
+      </ul>
+    </section>
+
+    <section class="MainInfoFooter">
+      <div class="ContactInfo">
+        <h2 data-text="navContact">Связаться с нами</h2>
+        <span>IČ: 17595479</span>
+        <span>IČ DPH: CZ17595479</span>
+        <span>Email: info.spartasp.cz@gmail.com</span>
+        <span>Phone: +420 723 194 644</span>
+        <span>Sídlo: Sazovicka 458/30 Zlicin, 155 21, Praha</span>
+      </div>
+    </section>
+
+    <section class="PrivacySec">
+      <span>© Created by github: @d0rian3 </span>
+    </section>
+  </article>
+</footer>
+
+{% endblock %}

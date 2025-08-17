@@ -1,0 +1,174 @@
+footer {
+  background-color: #191a23;
+  border-radius: 45px 45px 0 0;
+  padding: 60px;
+}
+footer article {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+footer .FooterNav {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+
+}
+
+
+
+footer .FooterNav .FooterPosLogo img {
+  width: 25px;
+}
+
+footer .FooterNav  h2 {
+  color: white;
+  font-size: 25px;
+  font-weight: 200;
+}
+
+footer .FooterNav ul {
+  display: flex;
+  gap: 40px;
+  font-size: 15px;
+  color: white;
+  text-decoration: underline;
+}
+
+footer .FooterNav .SocialIconsDiv {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+footer .MainInfoFooter {
+  display: flex;
+  gap: 150px;
+  align-items: center;
+}
+
+footer .MainInfoFooter .ContactInfo {
+  align-items: center;
+  margin-top: 65px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+footer .MainInfoFooter .ContactInfo h2 {
+  background-color: #b9ff66;
+  display: inline-block;
+  padding: 3px;
+  font-weight: 400;
+  border-radius: 7px;
+  align-self: flex-start;
+}
+
+footer .MainInfoFooter .ContactInfo span {
+  color: white;
+  align-self: flex-start;
+}
+
+footer .SubscribeForm {
+  background-color: #292a32;
+  border-radius: 14px;
+  padding: 60px 40px;
+  display: flex;
+  align-items: center;
+  margin-top: 65px;
+  gap: 20px;
+}
+
+footer .SubscribeForm input {
+  border-radius: 14px;
+  border: 1px solid white;
+  padding: 20px 35px;
+  color: white;
+  font-size: 18px;
+}
+
+footer .SubscribeForm button {
+  color: #000;
+  background-color: #b9ff66;
+  padding: 20px 35px;
+  border-radius: 14px;
+  font-size: 20px;
+  transition: 0.2s ease;
+}
+
+footer .SubscribeForm button:hover {
+  transform: scale(0.9);
+  border: 1px solid #b9ff66;
+  background-color: inherit;
+  color: white;
+  cursor: pointer;
+}
+
+footer hr {
+  margin: 50px 0;
+}
+
+footer .PrivacySec {
+  display: flex;
+  gap: 40px;
+  color: white;
+}
+
+footer .PrivacySec span:last-child {
+  text-decoration: underline;
+}
+
+
+
+@media (max-width: 1200px) {
+  footer .SocialIconsDiv {
+    display: none !important;
+  }
+  
+  footer .FooterPosLogo {
+    align-self: center;
+    margin-bottom: 10px;
+  }
+  
+  footer .ListFooter {
+    flex-direction: column;
+    text-decoration: none !important;
+    gap: 10px !important;
+  }
+  
+  footer .FooterNav {
+    flex-direction: column;
+  }
+  
+  footer .MainInfoFooter {
+    gap: 0 !important;
+    flex-direction: column;
+  }
+  
+  footer .ContactInfo h2 {
+    align-self: center !important;
+  }
+  
+  footer .ContactInfo span {
+    align-self: center !important;
+    text-align: center;
+  }
+  
+  footer .SubscribeForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  footer .PrivacySec {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 470px) {
+  footer .SubscribeForm input,
+  footer .SubscribeForm button {
+    width: 150px !important;
+  }
+}

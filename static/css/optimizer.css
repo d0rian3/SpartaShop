@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+}
+button,
+textarea,
+input {
+  background-color: inherit;
+  border: none;
+  color: inherit;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+body {
+  margin: 0px 100px;
+}

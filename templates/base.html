@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}Kurýři v Praze{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'css/optimizer.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/root.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/nav.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/lightgallery.css' %}" />
+  <link rel="icon" type="image/svg+xml" href="{% static 'images/kur white 1.svg' %}" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Aboreto&family=Alegreya:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  {% block navigate %}{% endblock %}
+  {% block header %}{% endblock %}
+  {% block main %}{% endblock %}
+  {% block footer %}{% endblock %}
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const gallery = document.getElementById("gallery");
+      if (gallery) {
+        lightGallery(gallery, {
+          animateThumb: false,
+          zoomFromOrigin: false,
+          allowMediaOverlap: true,
+          toggleThumb: true,
+        });
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init({
+        publicKey: "ydQYaoVh7Sb1bLoUn",
+      });
+    })();
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("contact-form");
+
+      if (form) {
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          emailjs.sendForm("service_x6ylyn6", "template_apjwt8g", this).then(
+            function () {
+              alert("Сообщение отправлено!");
+              form.reset();
+            },
+            function (error) {
+              alert("Ошибка при отправке: " + JSON.stringify(error));
+              form.reset();
+            }
+          );
+        });
+      }
+    });
+  </script>
+  <script src="{% static 'js/index.js' %}"></script>
+  <script src="{% static 'js/lightgallery.min.js' %}"></script>
+  <script type="module" src="{% static 'js/languageSwitcher.js' %}"></script>
+  <script type="module" src="{% static 'js/language.js' %}"></script>
+</body>
+
+</html>

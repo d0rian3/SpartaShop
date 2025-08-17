@@ -1,0 +1,146 @@
+.PcNavArticle {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0px;
+    align-items: center;
+  }
+  .PositivusLogo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+  }
+  .PositivusLogo img {
+    width: 80px;
+    -webkit-animation: logoBreath 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation: logoBreath 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-transform-origin: center;
+    transform-origin: center;
+  }
+  .PositivusLogo h2 {
+        font-weight: 400;
+  }
+     
+  .ListNav {
+      font-size: 20px;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      cursor: pointer;
+      
+  }
+ .LangNavSection ul{
+  display: flex;
+  gap: 15px;
+ }
+ .LangNavSection ul li {  
+  cursor: pointer;
+ }
+
+  
+  .ListNav button {
+        padding: 10px 15px;
+        border: 2px solid #191a23;
+        border-radius: 15px;
+        transition: 0.2s ease-in;
+        font-size: 18px;
+        font-weight: 400;
+  }
+  .ListNav button:hover {
+          cursor: pointer;
+          background-color: #191a23;
+          color: #fafafa;
+  }
+       
+
+.SectionBurger {
+  display: none;
+}
+@media (max-width: 1300px) {
+  .RightSideList {
+    display: none;
+  }
+  .SectionBurger {
+    display: flex;
+    align-items: center;
+    .burger {
+      position: relative;
+      width: 40px;
+      height: 30px;
+      background: transparent;
+      cursor: pointer;
+      display: block;
+    }
+
+    .burger input {
+      display: none;
+    }
+
+    .burger span {
+      display: block;
+      position: absolute;
+      height: 4px;
+      width: 100%;
+      background: black;
+      border-radius: 9px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: 0.25s ease-in-out;
+    }
+
+    .burger span:nth-of-type(1) {
+      top: 0px;
+      transform-origin: left center;
+    }
+
+    .burger span:nth-of-type(2) {
+      top: 50%;
+      transform: translateY(-50%);
+      transform-origin: left center;
+    }
+
+    .burger span:nth-of-type(3) {
+      top: 100%;
+      transform-origin: left center;
+      transform: translateY(-100%);
+    }
+
+    .burger input:checked ~ span:nth-of-type(1) {
+      transform: rotate(45deg);
+      top: 0px;
+      left: 5px;
+    }
+
+    .burger input:checked ~ span:nth-of-type(2) {
+      width: 0%;
+      opacity: 0;
+    }
+
+    .burger input:checked ~ span:nth-of-type(3) {
+      transform: rotate(-45deg);
+      top: 28px;
+      left: 5px;
+    }
+  }
+}
+
+@keyframes logoBreath {
+  0% {
+    transform: scale(0.95);
+  }
+  5% {
+    transform: scale(1.1);
+  }
+  39% {
+    transform: scale(0.85);
+  }
+  45% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
