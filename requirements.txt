@@ -5,8 +5,10 @@ Django==5.2.4
 django-appconf==1.1.0
 django-compressor==4.5.1
 djangorestframework==3.16.0
+gunicorn==23.0.0
 idna==3.10
 libsass==0.23.0
+packaging==25.0
 pillow==11.3.0
 rcssmin==1.1.2
 requests==2.32.4
