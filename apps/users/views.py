@@ -205,7 +205,7 @@ def stripe_webhook(request):
         session = event['data']['object']
         metadata = session.get('metadata', {})
 
-        # Поддержка и одного заказа, и корзины
+        
         order_ids_str = metadata.get('order_id') or metadata.get('order_ids')
         if not order_ids_str:
             return HttpResponse("No order IDs in metadata", status=400)
@@ -237,7 +237,7 @@ def stripe_webhook(request):
                     send_order_email(order)
 
             except Order.DoesNotExist:
-                # Можно логировать, чтобы понимать, если ID не найден
+                
                 print(f"Order {oid} not found")
                 continue
 
@@ -307,7 +307,7 @@ def checkout(request):
         product = get_object_or_404(Product, id=product_id)
         unit_amount = int(product.price * 100)
 
-        # создаём заказ со статусом "pending"
+        
         order = Order.objects.create(
             product=product,
             quantity=quantity,
@@ -315,7 +315,7 @@ def checkout(request):
         )
         order_ids.append(str(order.id))
 
-        # добавляем в Stripe line_items
+        
         line_items.append({
             "price_data": {
                 "currency": "eur",
@@ -341,7 +341,7 @@ def checkout(request):
             },
         )
 
-        # чистим корзину только после успешного создания сессии
+        
         request.session['cart'] = {}
 
         return redirect(checkout_session.url)
