@@ -201,11 +201,11 @@ def stripe_webhook(request):
 
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
-        order_id = session.get('metadata', {}).get('order_id')
+        order_ids = session.get('metadata', {}).get('order_ids') or session.get('metadata', {}).get('order_id')
         customer_email = session.get('customer_details', {}).get('email')
 
-        if order_id:
-            for order_id in order_id.split(','):
+        if order_ids:
+            for order_id in order_ids.split(','):
                 try:
                     order = Order.objects.get(pk=order_id)
                     order.status = 'paid'
