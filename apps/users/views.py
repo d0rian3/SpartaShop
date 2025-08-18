@@ -202,7 +202,7 @@ def stripe_webhook(request):
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
         order_id = session.get('metadata', {}).get('order_id')
-        customer_email = session.get('billing_details', {}).get('email')
+        customer_email = session.get('customer_details', {}).get('email')
 
         if order_id:
             try:

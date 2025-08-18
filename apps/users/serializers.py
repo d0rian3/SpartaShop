@@ -10,7 +10,6 @@ class ProductSerializer(serializers.ModelSerializer):
 
     def get_image(self, obj):
         request = self.context.get('request')
-        if obj.image:
-            
+        if obj.image:            
             return request.build_absolute_uri(obj.image.url)
         return None
