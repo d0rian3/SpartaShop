@@ -187,7 +187,11 @@ def send_order_email(order):
 
     msg = EmailMultiAlternatives(subject, text_content, from_email, to)
     msg.attach_alternative(html_content, "text/html")
+
     msg.send()
+    sent = msg.send()
+    print("Отправлено писем:", sent)
+
 @csrf_exempt
 def stripe_webhook(request):
     payload = request.body
