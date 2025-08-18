@@ -45,6 +45,7 @@ node_modules/
 npm-debug.log
 
 
-**/migrations/*.py
 **/migrations/*.pyc
+**/migrations/__pycache__/
 !**/migrations/__init__.py
+!**/migrations/000*.py
