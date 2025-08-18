@@ -189,9 +189,7 @@ def send_order_email(order):
     msg.attach_alternative(html_content, "text/html")
 
     msg.send()
-    sent = msg.send()
-    print("Отправлено писем:", sent)
-
+    
 @csrf_exempt
 def stripe_webhook(request):
     payload = request.body
@@ -205,41 +203,46 @@ def stripe_webhook(request):
 
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
-        order_ids = session.get('metadata', {}).get('order_ids') or session.get('metadata', {}).get('order_id')
+        metadata = session.get('metadata', {})
+
+        # Поддержка и одного заказа, и корзины
+        order_ids_str = metadata.get('order_id') or metadata.get('order_ids')
+        if not order_ids_str:
+            return HttpResponse("No order IDs in metadata", status=400)
+
         customer_email = session.get('customer_details', {}).get('email')
 
-        if order_ids:
-            for order_id in order_ids.split(','):
-                try:
-                    order = Order.objects.get(pk=order_id)
-                    order.status = 'paid'
+        for oid in order_ids_str.split(','):
+            try:
+                order = Order.objects.get(pk=oid)
+                order.status = 'paid'
 
-                    
-                    if customer_email:
-                        order.email = customer_email
+                if customer_email:
+                    order.email = customer_email
 
-                    
-                    shipping = session.get('shipping', None)
-                    if shipping:
-                        address = shipping.get('address', {})
-                        order.shipping_name = shipping.get('name', '')
-                        order.shipping_line1 = address.get('line1', '')
-                        order.shipping_line2 = address.get('line2', '')
-                        order.shipping_city = address.get('city', '')
-                        order.shipping_state = address.get('state', '')
-                        order.shipping_postal_code = address.get('postal_code', '')
-                        order.shipping_country = address.get('country', '')
+                shipping = session.get('shipping', None)
+                if shipping:
+                    address = shipping.get('address', {})
+                    order.shipping_name = shipping.get('name', '')
+                    order.shipping_line1 = address.get('line1', '')
+                    order.shipping_line2 = address.get('line2', '')
+                    order.shipping_city = address.get('city', '')
+                    order.shipping_state = address.get('state', '')
+                    order.shipping_postal_code = address.get('postal_code', '')
+                    order.shipping_country = address.get('country', '')
 
-                    order.save()
+                order.save()
 
-                    
-                    if customer_email:
-                        send_order_email(order)
+                if customer_email:
+                    send_order_email(order)
 
-                except Order.DoesNotExist:
-                    pass
-                    
+            except Order.DoesNotExist:
+                # Можно логировать, чтобы понимать, если ID не найден
+                print(f"Order {oid} not found")
+                continue
+
     return HttpResponse(status=200)
+
 
 
 def add_to_cart(request, product_id):
