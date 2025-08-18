@@ -32,7 +32,7 @@ DOMAIN = os.getenv("DOMAIN", "http://127.0.0.1:8000")
 SECRET_KEY = 'django-insecure-kn^)5%v*#&f-&-44_q^e_(0ucp+ri$3ekc@k0kqswcp6+xdkrb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'spartashop-1.onrender.com']
 
