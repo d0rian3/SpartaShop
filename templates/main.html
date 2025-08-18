@@ -10,9 +10,12 @@
       <ul class="ListNav">
         <li data-text="navOffer" class="whyUsLink">Что мы предлагаем</li>
         <li data-text="navAdvantages" class="adventageLink">Преимущества</li>
-        <li><a href="{% url 'shop' %}" data-text="navShop">Магазин</a></li>
         <li data-text="navFaq" class="questions">Вопросы</li>
         <li data-text="navGallery" class="galleryLink">Галерея</li>
+        <li><a href="{% url 'shop' %}" data-text="navShop">Магазин</a></li>
+        <li data-text="navCart" class="cartLink">
+          <a href="{% url 'cart_detail' %}">Корзина</a>
+        </li>
       </ul>
     </section>
     <section class="LangNavSection">
@@ -45,139 +48,79 @@
           <ul>
             <li>
               <button>
-                <svg
-                  stroke-linejoin="round"
-                  stroke-linecap="round"
-                  stroke-width="2"
-                  stroke="white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  height="14"
-                  width="14"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="white" fill="none"
+                  viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
                   <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                   <circle r="4" cy="7" cx="9"></circle>
                   <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                   <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                 </svg>
-                <a
-                  href="#adventage"
-                  class="adventageLink"
-                  data-text="navAdvantages"
-                  ><u>Преимущества</u></a
-                >
+                <a href="#adventage" class="adventageLink" data-text="navAdvantages"><u>Преимущества</u></a>
               </button>
             </li>
             <li>
               <button>
-                <svg
-                  stroke-linejoin="round"
-                  stroke-linecap="round"
-                  stroke-width="2"
-                  stroke="white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  height="14"
-                  width="14"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
-                  ></path>
-                  <path
-                    d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
-                  ></path>
+                <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="white" fill="none"
+                  viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
                 </svg>
-                <a href="#whyUsId" class="whyUsLink" data-text="navOffer"
-                  >Предлагаем</a
-                >
+                <a href="#whyUsId" class="whyUsLink" data-text="navOffer">Предлагаем</a>
               </button>
             </li>
 
             <li>
               <button>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="20px"
-                  viewBox="0 -960 960 960"
-                  width="20px"
-                  fill="#FFFFFF"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                  fill="#FFFFFF">
                   <path
-                    d="M263.79-96Q234-96 213-117.21t-21-51Q192-198 213.21-219t51-21Q294-240 315-218.79t21 51Q336-138 314.79-117t-51 21Zm432 0Q666-96 645-117.21t-21-51Q624-198 645.21-219t51-21Q726-240 747-218.79t21 51Q768-138 746.79-117t-51 21ZM253-696l83 192h301l82-192H253Zm-31-72h570q14 0 20.5 11t1.5 23L702.63-476.14Q694-456 676.5-444T637-432H317l-42 72h493v72H276q-43 0-63.5-36.15-20.5-36.16.5-71.85l52-90-131-306H48v-72h133l41 96Zm114 264h301-301Z"
-                  />
+                    d="M263.79-96Q234-96 213-117.21t-21-51Q192-198 213.21-219t51-21Q294-240 315-218.79t21 51Q336-138 314.79-117t-51 21Zm432 0Q666-96 645-117.21t-21-51Q624-198 645.21-219t51-21Q726-240 747-218.79t21 51Q768-138 746.79-117t-51 21ZM253-696l83 192h301l82-192H253Zm-31-72h570q14 0 20.5 11t1.5 23L702.63-476.14Q694-456 676.5-444T637-432H317l-42 72h493v72H276q-43 0-63.5-36.15-20.5-36.16.5-71.85l52-90-131-306H48v-72h133l41 96Zm114 264h301-301Z" />
                 </svg>
-                <a href="{% url 'shop' %}" class="whyUsLink" data-text="navShop"
-                  >Магазин</a
-                >
+                <a href="{% url 'shop' %}" class="whyUsLink" data-text="navShop">Магазин</a>
               </button>
             </li>
 
             <hr />
             <li>
               <button>
-                <svg
-                  stroke-linejoin="round"
-                  stroke-linecap="round"
-                  stroke-width="2"
-                  stroke="white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  height="14"
-                  width="14"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="white" fill="none"
+                  viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
                   <rect ry="2" rx="2" height="13" width="13" y="9" x="9"></rect>
-                  <path
-                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                  ></path>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                 </svg>
-                <a href="#faqBlock" class="questions" data-text="navFaq"
-                  >Вопросы</a
-                >
+                <a href="#faqBlock" class="questions" data-text="navFaq">Вопросы</a>
               </button>
             </li>
+
             <li>
               <button>
-                <svg
-                  stroke-linejoin="round"
-                  stroke-linecap="round"
-                  stroke-width="2"
-                  stroke="white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  height="14"
-                  width="14"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                  fill="#FFFFFF">
+                  <path
+                    d="M263.79-96Q234-96 213-117.21t-21-51Q192-198 213.21-219t51-21Q294-240 315-218.79t21 51Q336-138 314.79-117t-51 21Zm432 0Q666-96 645-117.21t-21-51Q624-198 645.21-219t51-21Q726-240 747-218.79t21 51Q768-138 746.79-117t-51 21ZM253-696l83 192h301l82-192H253Zm-31-72h570q14 0 20.5 11t1.5 23L702.63-476.14Q694-456 676.5-444T637-432H317l-42 72h493v72H276q-43 0-63.5-36.15-20.5-36.16.5-71.85l52-90-131-306H48v-72h133l41 96Zm114 264h301-301Z" />
+                </svg>
+                <a href="{% url 'cart_detail' %}" class="cartLink" data-text="navCart">Корзина</a>
+              </button>
+            </li>
+
+            <li>
+              <button>
+                <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="white" fill="none"
+                  viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
                   <polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon>
                 </svg>
-                <a href="#gallery" class="galleryLink" data-text="navGallery"
-                  >Галерея</a
-                >
+                <a href="#gallery" class="galleryLink" data-text="navGallery">Галерея</a>
               </button>
             </li>
             <hr />
             <li>
               <button>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="14px"
-                  viewBox="0 -960 960 960"
-                  width="14px"
-                  fill="#e8eaed"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px"
+                  fill="#e8eaed">
                   <path
-                    d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z"
-                  />
+                    d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z" />
                 </svg>
-                <a
-                  href="#FooterNavId"
-                  class="galleryLink"
-                  data-text="navContact"
-                  >Свяжитесь с нами!</a
-                >
+                <a href="#FooterNavId" class="galleryLink" data-text="navContact">Свяжитесь с нами!</a>
               </button>
             </li>
           </ul>
@@ -204,9 +147,7 @@
     </section>
     <section class="IllustrationPic">
       {% if request.GET.payment == "success" %}
-      <div
-        id="payment-popup"
-        style="
+      <div id="payment-popup" style="
           position: fixed;
           top: 20px;
           right: 20px;
@@ -218,8 +159,7 @@
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
           transition: opacity 0.5s ease;
           opacity: 1;
-        "
-      >
+        ">
         ✅ Оплата прошла успешно!
       </div>
       <script>
@@ -232,9 +172,7 @@
         }, 5000);
       </script>
       {% endif %} {% if request.GET.payment == "cancel" %}
-      <div
-        id="payment-popup"
-        style="
+      <div id="payment-popup" style="
           position: fixed;
           top: 20px;
           right: 20px;
@@ -246,8 +184,7 @@
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
           transition: opacity 0.5s ease;
           opacity: 1;
-        "
-      >
+        ">
         ❌ Оплата не прошла!
       </div>
       <script>
@@ -293,9 +230,7 @@
           <div class="CardSearch">
             <h3 data-text="servicesCard1Title">Обслуживание транспорта</h3>
             <div class="LearnMore">
-              <span data-text="servicesCard1Description"
-                >Надёжный ремонт и сервис для вашего транспорта.</span
-              >
+              <span data-text="servicesCard1Description">Надёжный ремонт и сервис для вашего транспорта.</span>
             </div>
           </div>
           <img src="{% static 'images/card1.png' %}" alt="header" />
@@ -304,10 +239,8 @@
           <div class="CardSearch">
             <h3 data-text="servicesCard2Title">Флотилия Болт</h3>
             <div class="LearnMore">
-              <span data-text="servicesCard2Description"
-                >Управление и обслуживание парков для курьеров и
-                водителей.</span
-              >
+              <span data-text="servicesCard2Description">Управление и обслуживание парков для курьеров и
+                водителей.</span>
             </div>
           </div>
           <img src="{% static 'images/card2.png' %}" alt="header" />
@@ -316,10 +249,8 @@
           <div class="CardSearch">
             <h3 data-text="servicesCard3Title">Аренда электровелосипедов</h3>
             <div class="LearnMore">
-              <span data-text="servicesCard3Description"
-                >Современные электровелосипеды в аренду на выгодных
-                условиях.</span
-              >
+              <span data-text="servicesCard3Description">Современные электровелосипеды в аренду на выгодных
+                условиях.</span>
             </div>
           </div>
           <img src="{% static 'images/card3.png' %}" alt="header" />
@@ -328,9 +259,8 @@
           <div class="CardSearch">
             <h3 data-text="servicesCard4Title">Продажа электровелосипедов</h3>
             <div class="LearnMore">
-              <span data-text="servicesCard4Description"
-                >Новые и проверенные электровелосипеды по доступным ценам.</span
-              >
+              <span data-text="servicesCard4Description">Новые и проверенные электровелосипеды по доступным
+                ценам.</span>
             </div>
           </div>
           <img src="{% static 'images/card4.png' %}" alt="header" />
@@ -339,10 +269,8 @@
           <div class="CardSearch">
             <h3 data-text="servicesCard5Title">Аренда с выкупом</h3>
             <div class="LearnMore">
-              <span data-text="servicesCard5Description"
-                >Удобный способ приобрести транспорт — аренда с последующим
-                выкупом.</span
-              >
+              <span data-text="servicesCard5Description">Удобный способ приобрести транспорт — аренда с последующим
+                выкупом.</span>
             </div>
           </div>
           <img src="{% static 'images/card5.png' %}" alt="header" />
@@ -351,10 +279,8 @@
           <div class="CardSearch">
             <h3 data-text="servicesCard6Title">Ремонт и сервис</h3>
             <div class="LearnMore">
-              <span data-text="servicesCard6Description"
-                >Качественное техническое обслуживание и ремонт любого
-                транспорта.</span
-              >
+              <span data-text="servicesCard6Description">Качественное техническое обслуживание и ремонт любого
+                транспорта.</span>
             </div>
           </div>
           <img src="{% static 'images/card6.png' %}" alt="header" />
@@ -368,9 +294,7 @@
           <div class="CardSearch">
             <h3 data-text="servicesCard1Title">Обслуживание транспорта</h3>
             <div class="LearnMore">
-              <span data-text="servicesCard1Description"
-                >Надёжный ремонт и сервис для вашего транспорта.</span
-              >
+              <span data-text="servicesCard1Description">Надёжный ремонт и сервис для вашего транспорта.</span>
             </div>
           </div>
         </li>
@@ -378,10 +302,8 @@
           <div class="CardSearch">
             <h3 data-text="servicesCard2Title">Флотилия Болт</h3>
             <div class="LearnMore">
-              <span data-text="servicesCard2Description"
-                >Управление и обслуживание парков для курьеров и
-                водителей.</span
-              >
+              <span data-text="servicesCard2Description">Управление и обслуживание парков для курьеров и
+                водителей.</span>
             </div>
           </div>
         </li>
@@ -389,10 +311,8 @@
           <div class="CardSearch">
             <h3 data-text="servicesCard3Title">Аренда электровелосипедов</h3>
             <div class="LearnMore">
-              <span data-text="servicesCard3Description"
-                >Современные электровелосипеды в аренду на выгодных
-                условиях.</span
-              >
+              <span data-text="servicesCard3Description">Современные электровелосипеды в аренду на выгодных
+                условиях.</span>
             </div>
           </div>
         </li>
@@ -400,9 +320,8 @@
           <div class="CardSearch">
             <h3 data-text="servicesCard4Title">Продажа электровелосипедов</h3>
             <div class="LearnMore">
-              <span data-text="servicesCard4Description"
-                >Новые и проверенные электровелосипеды по доступным ценам.</span
-              >
+              <span data-text="servicesCard4Description">Новые и проверенные электровелосипеды по доступным
+                ценам.</span>
             </div>
           </div>
         </li>
@@ -410,10 +329,8 @@
           <div class="CardSearch">
             <h3 data-text="servicesCard5Title">Аренда с выкупом</h3>
             <div class="LearnMore">
-              <span data-text="servicesCard5Description"
-                >Удобный способ приобрести транспорт — аренда с последующим
-                выкупом.</span
-              >
+              <span data-text="servicesCard5Description">Удобный способ приобрести транспорт — аренда с последующим
+                выкупом.</span>
             </div>
           </div>
         </li>
@@ -421,10 +338,8 @@
           <div class="CardSearch">
             <h3 data-text="servicesCard6Title">Ремонт и сервис</h3>
             <div class="LearnMore">
-              <span data-text="servicesCard6Description"
-                >Качественное техническое обслуживание и ремонт любого
-                транспорта.</span
-              >
+              <span data-text="servicesCard6Description">Качественное техническое обслуживание и ремонт любого
+                транспорта.</span>
             </div>
           </div>
         </li>
@@ -602,116 +517,52 @@
     <p>+420 723 194 644</p>
   </div>
   <article id="gallery">
-    <a
-      href="{% static 'images/photo_2025-03-05_19-37-41.jpg' %}"
-      data-sub-html="#caption1"
-      class="image"
-    >
+    <a href="{% static 'images/photo_2025-03-05_19-37-41.jpg' %}" data-sub-html="#caption1" class="image">
       <img src="{% static 'images/photo_2025-03-05_19-37-41.jpg' %}" alt="" />
     </a>
-    <a
-      href="{% static 'images/photo_2025-03-05_19-37-26.jpg' %}"
-      data-sub-html="#caption1"
-      class="image"
-    >
+    <a href="{% static 'images/photo_2025-03-05_19-37-26.jpg' %}" data-sub-html="#caption1" class="image">
       <img src="{% static 'images/photo_2025-03-05_19-37-26.jpg' %}" alt="" />
     </a>
-    <a
-      href="{% static 'images/photo_2025-03-05_19-37-35.jpg' %}"
-      data-sub-html="#caption1"
-      class="image"
-    >
+    <a href="{% static 'images/photo_2025-03-05_19-37-35.jpg' %}" data-sub-html="#caption1" class="image">
       <img src="{% static 'images/photo_2025-03-05_19-37-35.jpg' %}" alt="" />
     </a>
-    <a
-      href="{% static 'images/photo_2025-03-05_19-37-46.jpg' %}"
-      data-sub-html="#caption1"
-      class="image"
-    >
+    <a href="{% static 'images/photo_2025-03-05_19-37-46.jpg' %}" data-sub-html="#caption1" class="image">
       <img src="{% static 'images/photo_2025-03-05_19-37-46.jpg' %}" alt="" />
     </a>
-    <a
-      href="{% static 'images/photo_2025-03-05_19-37-50.jpg' %}"
-      data-sub-html="#caption1"
-      class="image"
-    >
+    <a href="{% static 'images/photo_2025-03-05_19-37-50.jpg' %}" data-sub-html="#caption1" class="image">
       <img src="{% static 'images/photo_2025-03-05_19-37-50.jpg' %}" alt="" />
     </a>
-    <a
-      href="{% static 'images/photo_2025-03-06_10-40-26.jpg' %}"
-      data-sub-html="#caption1"
-      class="image"
-    >
+    <a href="{% static 'images/photo_2025-03-06_10-40-26.jpg' %}" data-sub-html="#caption1" class="image">
       <img src="{% static 'images/photo_2025-03-06_10-40-26.jpg' %}" alt="" />
     </a>
-    <a
-      href="{% static 'images/photo_2025-03-05_19-37-55.jpg' %}"
-      data-sub-html="#caption1"
-      class="image"
-    >
+    <a href="{% static 'images/photo_2025-03-05_19-37-55.jpg' %}" data-sub-html="#caption1" class="image">
       <img src="{% static 'images/photo_2025-03-05_19-37-55.jpg' %}" alt="" />
     </a>
-    <a
-      href="{% static 'images/bike1.jpg' %}"
-      data-sub-html="#caption1"
-      class="image"
-    >
+    <a href="{% static 'images/bike1.jpg' %}" data-sub-html="#caption1" class="image">
       <img src="{% static 'images/bike1.jpg' %}" alt="" />
     </a>
-    <a
-      href="{% static 'images/bike2.jpg' %}"
-      data-sub-html="#caption1"
-      class="image"
-    >
+    <a href="{% static 'images/bike2.jpg' %}" data-sub-html="#caption1" class="image">
       <img src="{% static 'images/bike2.jpg' %}" alt="" />
     </a>
-    <a
-      href="{% static 'images/bike3.jpg' %}"
-      data-sub-html="#caption1"
-      class="image"
-    >
+    <a href="{% static 'images/bike3.jpg' %}" data-sub-html="#caption1" class="image">
       <img src="{% static 'images/bike3.jpg' %}" alt="" />
     </a>
-    <a
-      href="{% static 'images/bike4.jpg' %}"
-      data-sub-html="#caption1"
-      class="image"
-    >
+    <a href="{% static 'images/bike4.jpg' %}" data-sub-html="#caption1" class="image">
       <img src="{% static 'images/bike4.jpg' %}" alt="" />
     </a>
-    <a
-      href="{% static 'images/bike5.jpg' %}"
-      data-sub-html="#caption1"
-      class="image"
-    >
+    <a href="{% static 'images/bike5.jpg' %}" data-sub-html="#caption1" class="image">
       <img src="{% static 'images/bike5.jpg' %}" alt="" />
     </a>
-    <a
-      href="{% static 'images/bike6.jpg' %}"
-      data-sub-html="#caption1"
-      class="image"
-    >
+    <a href="{% static 'images/bike6.jpg' %}" data-sub-html="#caption1" class="image">
       <img src="{% static 'images/bike6.jpg' %}" alt="" />
     </a>
-    <a
-      href="{% static 'images/group.jpg' %}"
-      data-sub-html="#caption1"
-      class="image"
-    >
+    <a href="{% static 'images/group.jpg' %}" data-sub-html="#caption1" class="image">
       <img src="{% static 'images/group.jpg' %}" alt="" />
     </a>
-    <a
-      href="{% static 'images/w-tower.jpg' %}"
-      data-sub-html="#caption1"
-      class="image"
-    >
+    <a href="{% static 'images/w-tower.jpg' %}" data-sub-html="#caption1" class="image">
       <img src="{% static 'images/w-tower.jpg' %}" alt="" />
     </a>
-    <a
-      href="{% static 'images/girl_driver.jpg' %}"
-      data-sub-html="#caption1"
-      class="image"
-    >
+    <a href="{% static 'images/girl_driver.jpg' %}" data-sub-html="#caption1" class="image">
       <img src="{% static 'images/girl_driver.jpg' %}" alt="" />
     </a>
   </article>
@@ -728,33 +579,14 @@
     <section class="ContactUsForm">
       <form id="contact-form">
         <label for="input-name" class="input_label">Name</label>
-        <input
-          id="input-name"
-          class="input_field"
-          type="text"
-          name="from_name"
-          placeholder="Name"
-          required
-        />
+        <input id="input-name" class="input_field" type="text" name="from_name" placeholder="Name" required />
 
         <label for="input-phone" class="input_label">Phone number</label>
-        <input
-          id="input-phone"
-          class="input_field"
-          type="tel"
-          name="phone_number"
-          placeholder="Phone number"
-          required
-        />
+        <input id="input-phone" class="input_field" type="tel" name="phone_number" placeholder="Phone number"
+          required />
 
         <label for="textarea-message" class="input_label">Message</label>
-        <textarea
-          id="textarea-message"
-          name="message"
-          placeholder="Message"
-          class="textarea"
-          required
-        ></textarea>
+        <textarea id="textarea-message" name="message" placeholder="Message" class="textarea" required></textarea>
 
         <button type="submit">Send Message</button>
       </form>

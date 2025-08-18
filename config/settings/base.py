@@ -145,7 +145,7 @@ TEMPLATES[0]['DIRS'] = [BASE_DIR / 'templates']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://cc26218b0acf.ngrok-free.app",
+    "https://spartashop-1.onrender.com/",
 ]
 
 

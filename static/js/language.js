@@ -72,7 +72,8 @@ export const language = {
 
     contactUsButton: "Свяжитесь с нами",
     allCategories: "Все",
-    legendAction: "Действия"
+    legendAction: "Действия",
+    navCart: "Корзина",
   },
 
   uk: {
@@ -149,6 +150,7 @@ export const language = {
     contactUsButton: "Зв’яжіться з нами",
     allCategories: "Всi",
     legendAction: "Що ми робимо",
+    navGallery: "Корзина",
   },
 
   en: {
@@ -225,6 +227,7 @@ export const language = {
     contactUsButton: "Contact Us",
     allCategories: "All",
     legendAction: "What We Do",
+    navCart: "Cart",
   },
 
   cz: {
@@ -299,5 +302,6 @@ export const language = {
     contactUsButton: "Kontaktujte nás", 
     allCategories: "Vše",
     legendAction: "Co děláme",
+    navCart: "Košík",
   },
 };

@@ -205,33 +205,139 @@ def stripe_webhook(request):
         customer_email = session.get('customer_details', {}).get('email')
 
         if order_id:
-            try:
-                order = Order.objects.get(pk=order_id)
-                order.status = 'paid'
+            for order_id in order_id.split(','):
+                try:
+                    order = Order.objects.get(pk=order_id)
+                    order.status = 'paid'
 
-                
-                if customer_email:
-                    order.email = customer_email
+                    
+                    if customer_email:
+                        order.email = customer_email
 
-                
-                shipping = session.get('shipping', None)
-                if shipping:
-                    address = shipping.get('address', {})
-                    order.shipping_name = shipping.get('name', '')
-                    order.shipping_line1 = address.get('line1', '')
-                    order.shipping_line2 = address.get('line2', '')
-                    order.shipping_city = address.get('city', '')
-                    order.shipping_state = address.get('state', '')
-                    order.shipping_postal_code = address.get('postal_code', '')
-                    order.shipping_country = address.get('country', '')
+                    
+                    shipping = session.get('shipping', None)
+                    if shipping:
+                        address = shipping.get('address', {})
+                        order.shipping_name = shipping.get('name', '')
+                        order.shipping_line1 = address.get('line1', '')
+                        order.shipping_line2 = address.get('line2', '')
+                        order.shipping_city = address.get('city', '')
+                        order.shipping_state = address.get('state', '')
+                        order.shipping_postal_code = address.get('postal_code', '')
+                        order.shipping_country = address.get('country', '')
 
-                order.save()
+                    order.save()
 
-                
-                if customer_email:
-                    send_order_email(order)
+                    
+                    if customer_email:
+                        send_order_email(order)
 
-            except Order.DoesNotExist:
-                pass
-
+                except Order.DoesNotExist:
+                    pass
+                    
     return HttpResponse(status=200)
+
+
+def add_to_cart(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    cart = request.session.get('cart', {})
+
+    if str(product_id) in cart:
+        cart[str(product_id)] += 1
+    else:
+        cart[str(product_id)] = 1
+
+    request.session['cart'] = cart
+
+    return redirect('cart_detail')
+
+def cart_detail(request):
+    cart = request.session.get('cart', {})
+
+    cart_items = []
+    total = 0
+
+    for product_id, quantity in cart.items():
+        product = get_object_or_404(Product, id=product_id)
+        subtotal = product.price * quantity
+        total += subtotal
+        cart_items.append({
+            'product': product,
+            'quantity': quantity,
+            'subtotal': subtotal,
+        })
+
+    context = {
+        'cart_items': cart_items,
+        'total': total,
+    }
+
+    return render(request, 'cart_detail.html', context)
+
+
+def remove_from_cart(request, product_id):
+    cart = request.session.get('cart', {})
+
+   
+    if str(product_id) in cart:
+        del cart[str(product_id)]
+        request.session['cart'] = cart  
+
+    return redirect('cart_detail')
+
+@csrf_exempt
+def checkout(request):
+    cart = request.session.get('cart', {})
+
+    if not cart:
+        return redirect('cart_detail')
+
+    line_items = []
+    order_ids = []
+
+    for product_id, quantity in cart.items():
+        product = get_object_or_404(Product, id=product_id)
+        unit_amount = int(product.price * 100)
+
+        # создаём заказ со статусом "pending"
+        order = Order.objects.create(
+            product=product,
+            quantity=quantity,
+            status="pending"
+        )
+        order_ids.append(str(order.id))
+
+        # добавляем в Stripe line_items
+        line_items.append({
+            "price_data": {
+                "currency": "eur",
+                "product_data": {"name": product.name},
+                "unit_amount": unit_amount,
+            },
+            "quantity": quantity,
+        })
+
+    try:
+        checkout_session = stripe.checkout.Session.create(
+            payment_method_types=["card"],
+            line_items=line_items,
+            mode="payment",
+            success_url=settings.DOMAIN + reverse("stripe_success") + "?session_id={CHECKOUT_SESSION_ID}",
+            cancel_url=settings.DOMAIN + reverse("stripe_cancel"),
+            metadata={"order_ids": ",".join(order_ids)},
+            shipping_address_collection={
+                "allowed_countries": [
+                    "AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT",
+                    "LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE","UA",
+                ],
+            },
+        )
+
+        # чистим корзину только после успешного создания сессии
+        request.session['cart'] = {}
+
+        return redirect(checkout_session.url)
+
+    except Exception as e:
+        return JsonResponse({"error": str(e)})
