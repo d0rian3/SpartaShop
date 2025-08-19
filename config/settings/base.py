@@ -15,14 +15,54 @@ import os
 import ssl
 import certifi
 import dj_database_url
+import logging
+
+
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO") 
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "[{asctime}] {levelname} {name}: {message}",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+            "level": LOG_LEVEL,
+        },
+    },
+    "root": {  
+        "handlers": ["console"],
+        "level": LOG_LEVEL,
+    },
+    "loggers": {
+        
+        "apps": {
+            "handlers": ["console"],
+            "level": LOG_LEVEL,
+            "propagate": False,
+        },
+        
+        "django": {
+            "handlers": ["console"],
+            "level": LOG_LEVEL,
+            "propagate": True,
+        },
+    },
+}
 
 ssl._create_default_https_context = ssl._create_default_https_context = lambda: ssl.create_default_context(cafile=certifi.where())
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
-STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
-STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET")
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
+STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY")
+STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
 DOMAIN = os.getenv("DOMAIN", "http://127.0.0.1:8000")
 
 # Quick-start development settings - unsuitable for production
@@ -145,7 +185,7 @@ TEMPLATES[0]['DIRS'] = [BASE_DIR / 'templates']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://spartashop-1.onrender.com/",
+    "https://spartashop-1.onrender.com",
 ]
 
 
