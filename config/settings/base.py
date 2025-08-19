@@ -194,5 +194,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'info.spartasp.cz@gmail.com'
-EMAIL_HOST_PASSWORD = 'army bdgl gdwb iyot'
+EMAIL_HOST_PASSWORD = 'gqzq kwkk otht jxrx'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
