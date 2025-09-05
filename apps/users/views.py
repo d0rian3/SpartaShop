@@ -30,6 +30,42 @@ def stripe_success(request):
 def stripe_cancel(request):
     return(redirect('/?payment=cancel'))
 
+SERVICES = {
+    "rent-bike": {
+        "title": "Rent a Bike",
+        "image": "images/testimage2.png",
+        "description": "Описание услуги аренды велосипеда"
+    },
+    "questions-and-answers": {
+        "title": "Questions and Answers",
+        "image": "images/testimage.png",
+        "description": "ТЕСТОВОЕ ОПИСАНИЕ"
+    },
+}
+
+def service_detail(request, slug):
+    service = SERVICES.get(slug)
+    if not service:
+        return HttpResponse("Service not found", status=404)
+    return render(request, 'service.html', {'service': service})
+
+
+def featured_products_api(request):    
+    featured_ids = [1, 2, 3, 4]  
+
+    products = Product.objects.filter(id__in=featured_ids)
+    print("FEATURED:", [p.id for p in products])
+    dataShortList = [
+        {
+            "id": p.id,
+            "title": p.name,
+            "price": str(p.price),
+            "image": p.image.url,
+            "slug": p.slug,
+        } for p in products
+    ]
+    return JsonResponse(dataShortList, safe=False)
+
 class ShopPageView(TemplateView):
     template_name = 'shop.html'
 
@@ -193,11 +229,11 @@ def send_order_email(order):
     
 
 logger = logging.getLogger(__name__)
-stripe.api_key = settings.STRIPE_SECRET_KEY  # КЛЮЧ ВАЖНО: читаем из settings
+stripe.api_key = settings.STRIPE_SECRET_KEY  
 
 @csrf_exempt
 def stripe_webhook(request):
-    # 1) Входящие данные
+    
     payload = request.body
     sig_header = request.META.get("HTTP_STRIPE_SIGNATURE")
     endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
@@ -205,7 +241,7 @@ def stripe_webhook(request):
     logger.info("Stripe webhook received")
     logger.debug("Raw payload: %s", payload)
 
-    # 2) Верифицируем подпись
+   
     try:
         event = stripe.Webhook.construct_event(
             payload=payload, sig_header=sig_header, secret=endpoint_secret
@@ -219,29 +255,29 @@ def stripe_webhook(request):
 
     logger.info("Stripe event type: %s", event.get("type"))
 
-    # 3) Обрабатываем только checkout.session.completed
+    
     if event["type"] == "checkout.session.completed":
         session = event["data"]["object"]
         metadata = session.get("metadata") or {}
 
-        # Поддерживаем и одиночный order_id, и список order_ids
+        
         ids_str = metadata.get("order_ids") or metadata.get("order_id")
         if not ids_str:
             logger.error("No order IDs in metadata. Session id: %s", session.get("id"))
-            # Возвращаем 200, чтобы Stripe не ретраил бесконечно (мы всё равно не сможем сопоставить)
+            
             return HttpResponse(status=200)
 
-        # Парсим список ID
+        
         order_ids = [oid.strip() for oid in ids_str.split(",") if oid.strip()]
         logger.debug("Order IDs to mark as paid: %s", order_ids)
 
-        # Пытаемся достать email надёжно
+        
         cust_details = session.get("customer_details") or {}
         customer_email = cust_details.get("email") or session.get("customer_email")
         if not customer_email:
             logger.warning("No customer email in session %s", session.get("id"))
 
-        # 4) Обновляем заказы
+        
         for oid in order_ids:
             try:
                 order = Order.objects.get(pk=oid)
@@ -249,18 +285,18 @@ def stripe_webhook(request):
                 logger.error("Order %s not found; skip.", oid)
                 continue
 
-            # Меняем статус
+            
             order.status = "paid"
 
-            # Если есть email — запишем
+            
             if customer_email and hasattr(order, "email"):
                 order.email = customer_email
 
-            # Адрес доставки — только если у модели есть такие поля
+            
             shipping = session.get("shipping")
             if shipping:
                 address = (shipping.get("address") or {})
-                # Защита: проверяем поля на модели
+               
                 if hasattr(order, "shipping_name"):
                     order.shipping_name = shipping.get("name", "") or ""
                 if hasattr(order, "shipping_line1"):
@@ -281,10 +317,10 @@ def stripe_webhook(request):
                 logger.info("Order %s marked as paid.", oid)
             except Exception:
                 logger.exception("Failed to save order %s", oid)
-                # даже если этот заказ упал — продолжаем остальные
+               
                 continue
 
-            # 5) Письмо покупателю — не ломаем webhook, если SMTP глюкнет
+            
             if customer_email:
                 try:
                     send_order_email(order)
@@ -292,7 +328,7 @@ def stripe_webhook(request):
                 except Exception:
                     logger.exception("Failed to send email for order %s", oid)
 
-    # 6) В остальных случаях просто 200
+    
     return HttpResponse(status=200)
 
 

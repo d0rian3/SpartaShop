@@ -206,15 +206,18 @@
 <main>
   <article class="ArticleMain">
     <section class="RunningImages">
-      <div>
-        <img src="{% static 'images/logo24.png' %}" alt="" />
-        <img src="{% static 'images/logo25.png' %}" alt="" />
-        <img src="{% static 'images/logo30.png' %}" alt="" />
-        <img src="{% static 'images/logo31.png' %}" alt="" />
-        <img src="{% static 'images/logo27.png' %}" alt="" />
-        <img src="{% static 'images/logo32.png' %}" alt="" />
-        <img src="{% static 'images/wolt.png' %}" alt="" />
-        <img src="{% static 'images/foodora.png' %}" alt="" />
+      <div class="slider">
+        <div class="slide-track">
+          <img src="{% static 'images/logo25.png' %}" alt="" />
+          <img src="{% static 'images/logo30.png' %}" alt="" />
+          <img src="{% static 'images/logo31.png' %}" alt="" />
+          <img src="{% static 'images/logo27.png' %}" alt="" />
+          <img src="{% static 'images/logo32.png' %}" alt="" />
+          <img src="{% static 'images/logo24.png' %}" alt="" />
+          <img src="{% static 'images/wolt.png' %}" alt="" />
+          <img src="{% static 'images/foodora.png' %}" alt="" />
+
+        </div>
       </div>
     </section>
     <div class="ServicesList" id="whyUsId">
@@ -224,7 +227,7 @@
         Обслуживание, аренда, продажа и выкуп — всё в одном месте:
       </span>
     </div>
-    <section class="ServicesCards">
+    <!-- <section class="ServicesCards">
       <ul class="CardsList">
         <li>
           <div class="CardSearch">
@@ -233,7 +236,7 @@
               <span data-text="servicesCard1Description">Надёжный ремонт и сервис для вашего транспорта.</span>
             </div>
           </div>
-          <img src="{% static 'images/card1.png' %}" alt="header" />
+          <img src="{% static 'images/cardfix.png' %}" alt="header" />
         </li>
         <li>
           <div class="CardSearch">
@@ -243,7 +246,7 @@
                 водителей.</span>
             </div>
           </div>
-          <img src="{% static 'images/card2.png' %}" alt="header" />
+          <img src="{% static 'images/card22.png' %}" alt="header" />
         </li>
         <li>
           <div class="CardSearch">
@@ -253,7 +256,7 @@
                 условиях.</span>
             </div>
           </div>
-          <img src="{% static 'images/card3.png' %}" alt="header" />
+          <img src="{% static 'images/cardrent.png' %}" alt="header" />
         </li>
         <li>
           <div class="CardSearch">
@@ -263,7 +266,7 @@
                 ценам.</span>
             </div>
           </div>
-          <img src="{% static 'images/card4.png' %}" alt="header" />
+          <img src="{% static 'images/cardsale.png' %}" alt="header" />
         </li>
         <li>
           <div class="CardSearch">
@@ -286,9 +289,9 @@
           <img src="{% static 'images/card6.png' %}" alt="header" />
         </li>
       </ul>
-    </section>
+    </section> -->
 
-    <section class="ServicesCardsPhone">
+    <!-- <section class="ServicesCardsPhone">
       <ul class="CardsList">
         <li>
           <div class="CardSearch">
@@ -344,7 +347,80 @@
           </div>
         </li>
       </ul>
+    </section> -->
+
+    <section class="gridServicCards">
+      <ul class="serviseParent">
+        <li class="kid1">
+          <a href="{% url 'service' 'rent-bike' %}" class="cardLink">
+
+            <img src="{% static 'images/testimage2.png' %}" alt="">
+            <div class="description">
+              <h4>
+                Questions and anwers
+              </h4>
+            </div>
+          </a>
+        </li>
+        <li class="kid2">
+          <a href="{% url 'service' 'rent-bike' %}" class="cardLink">
+            <img src="{% static 'images/testimage.png' %}" alt="">
+            <div class="description">
+              <h4>
+                Questions and anwers
+              </h4>
+            </div>
+          </a>
+        </li>
+        <li class="kid3">
+          <a href="{% url 'service' 'rent-bike' %}" class="cardLink">
+
+
+            <img src="{% static 'images/testimage3.png' %}" alt="">
+            <div class="description">
+              <h4>
+                Questions and anwers
+              </h4>
+            </div>
+          </a>
+        </li>
+        <li class="kid4">
+          <a href="{% url 'service' 'rent-bike'%}" class="cardLink">
+
+            <img src="{% static 'images/testimage4.png' %}" alt="">
+            <div class="description">
+              <h4>
+                Questions and anwers
+              </h4>
+            </div>
+          </a>
+        </li>
+        <li class="kid5">
+          <a href="{% url 'service' 'rent-bike' %}" class="cardLink">
+
+            <img src="{% static 'images/testimage5.png' %}" alt="">
+            <div class="description">
+              <h4>
+                Questions and anwers
+              </h4>
+            </div>
+          </a>
+        </li>
+        <li class="kid6">
+          <a href="{% url 'service' 'rent-bike'%}" class="cardLink">
+
+            <img src="{% static 'images/testimage6.png' %}" alt="">
+            <div class="description">
+              <h4>
+                Questions and anwers
+              </h4>
+            </div>
+          </a>
+        </li>
+      </ul>
     </section>
+
+
   </article>
   <article>
     <section class="CaseStudies">
@@ -360,6 +436,11 @@
       </div>
       <img src="{% static 'images/card7.png' %}" alt="header" />
     </section>
+  </article>
+  <article style="margin: 90px 0px">
+    <h3 style="margin: 0px 0px 40px 40px; font-size: 26px; text-decoration: underline; font-weight: 500;">Актуальное
+      предложение</h3>
+    <div id="productListShort"></div>
   </article>
 
   <article class="Advantages" id="adventage">
@@ -430,9 +511,11 @@
     </section>
   </article>
 
+
+
   <article>
     <section>
-      <div class="ServicesList">
+      <div class=" ServicesList">
         <button data-text="faqButton">Часто задаваемые вопросы</button>
       </div>
     </section>

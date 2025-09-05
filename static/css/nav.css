@@ -1,8 +1,10 @@
+
 .PcNavArticle {
     display: flex;
     justify-content: space-between;
     margin: 40px 0px;
-    align-items: center;
+    align-items: center; 
+    padding: 10px 20px; 
   }
   .PositivusLogo {
       display: flex;
@@ -21,9 +23,9 @@
   }
      
   .ListNav {
-      font-size: 20px;
+      font-size: 18px;
       display: flex;
-      gap: 40px;
+      gap: 30px;
       align-items: center;
       cursor: pointer;
       
@@ -39,7 +41,7 @@
   
   .ListNav button {
         padding: 10px 15px;
-        border: 2px solid #191a23;
+        border: 1px solid #191a23;
         border-radius: 15px;
         transition: 0.2s ease-in;
         font-size: 18px;
