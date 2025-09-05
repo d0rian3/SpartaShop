@@ -33,7 +33,7 @@ venv.bak/
 *.env
 
 
-staticfiles/
+
 media/
 
 
